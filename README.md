@@ -1,5 +1,5 @@
 # Mirador
-This repository contains a simple jekyll version of Mirador 3.
+Mirador 3 wrapped in a Jekyll site
 
 https://mcgrawcenter.github.io/mirador/
 
