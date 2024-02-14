@@ -17,7 +17,7 @@ Load the manifest in gallery view
 #### ?manifest=...&canvas=5
 Load the manifest with the 5th canvas displayed by default.
 
-### Collctions
+### Collections
 #### ?collection=
 
 A collection manifest can be loaded into the viewer by adding a 'collection' parameter to the URL, such as:
