@@ -17,13 +17,13 @@ Load the manifest in gallery view
 #### ?manifest=...&canvas=5
 Load the manifest with the 5th canvas displayed by default.
 
-## Colelctions
-### ?collection=
+### Collctions
+#### ?collection=
 
 A collection manifest can be loaded into the viewer by adding a 'collection' parameter to the URL, such as:
 https://mcgrawcenter.github.io/mirador/?collection=https://iiif.library.ucla.edu/collections/ark%3A%2F21198%2Fz1vb25zg
 
-### ?catalog=
+#### ?catalog=
 
 A collection manifest can also be loaded into the viewer as separate items with the first two items being displayed by default by using the 'catalog' parameter, such as :
 https://iiif.library.ucla.edu/collections/ark%3A%2F21198%2Fn15d0d
