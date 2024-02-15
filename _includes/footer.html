@@ -7,12 +7,14 @@ window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,function(a,name,value){ge
 var config = {id:"mirador"}
 
 if(typeof getvars['manifest'] !== 'undefined') {
-    if(typeof getvars['view'] !== 'undefined') {
-      config['windows'] = [{manifestId: getvars['manifest'], view: getvars['view']}];
-    }
-    else {
-      config['windows'] = [{manifestId: getvars['manifest']}];
-    }
+
+    var windows = {}
+    windows.manifestId = getvars['manifest'];
+
+    if(typeof getvars['view'] !== 'undefined') { windows.view = getvars['view']}
+    if(typeof getvars['canvas'] !== 'undefined') { windows.canvasIndex = (parseInt(getvars['canvas'])+1)}
+
+    config['windows'] = [windows];
     var miradorInstance = Mirador.viewer(config);
 }
 else if(typeof getvars['collection'] !== 'undefined') {
