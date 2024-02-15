@@ -26,7 +26,7 @@ https://mcgrawcenter.github.io/mirador/?collection=https://iiif.library.ucla.edu
 #### ?catalog=
 
 A collection manifest can also be loaded into the viewer as separate items with the first two items being displayed by default by using the 'catalog' parameter, such as :
-https://iiif.library.ucla.edu/collections/ark%3A%2F21198%2Fn15d0d
+https://mcgrawcenter.github.io/mirador/?catalog=https://iiif.library.ucla.edu/collections/ark%3A%2F21198%2Fn15d0d
 
 
 
