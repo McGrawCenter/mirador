@@ -4,4 +4,4 @@
 
 layout: default
 ---
-<div id="mirador"><img src='{{site.url}}/assets/images/waiting.gif' style='margin:10% 0 0 45%'/></div>
+<div id="mirador"></div>
