@@ -4,4 +4,14 @@
 
 layout: default
 ---
-<div id="mirador"></div>
+<div id="mirador-viewer"></div>
+
+<script src="{{ "/assets/js/mirador3.min.js" | relative_url }}"></script>
+<script type="text/javascript">
+
+var config = {id:"mirador"}
+Mirador.viewer(config);
+
+</script>
+
+
