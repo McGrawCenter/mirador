@@ -6,7 +6,7 @@ layout: default
 ---
 <div id="mirador-viewer"></div>
 
-<script src="{{ "assets/js/mirador3.min.js" | absolute_url }}"></script>
+<script src="{{ "assets/js/mirador3.min.js" | relative_url }}"></script>
 
 
 <script type="text/javascript">
