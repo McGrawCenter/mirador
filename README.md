@@ -25,11 +25,7 @@ A collection manifest can be loaded into the viewer by adding a 'collection' par
 
 https://mcgrawcenter.github.io/mirador/?collection=https://iiif.library.ucla.edu/collections/ark%3A%2F21198%2Fz1vb25zg
 
-#### ?catalog=
-
-A collection manifest can also be loaded into the viewer as separate items with the first two items being displayed by default by using the 'catalog' parameter, such as :
-
-https://mcgrawcenter.github.io/mirador/?catalog=https://iiif.library.ucla.edu/collections/ark%3A%2F21198%2Fn15d0d
+or with the manifest parameter as with a single manifest
 
 
 
