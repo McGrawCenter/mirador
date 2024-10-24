@@ -44,21 +44,26 @@ if (typeof getvars['manifest'] !== 'undefined') {
                     break;
                 case 'Collection':
                     if (typeof getvars['catalog'] !== 'undefined') {
-                        console.log('here');
+			
+			if(getvars['catalog'] == 'true') { getvars['catalog'] = 1; }
+			var catalog_window_array = getvars['catalog'].split(',');
+
                         config['windows'] = [];
                         config['catalog'] = [];
-
-                        for (var x = 0; x < manifest.items.length; x++) {
-                            var url = manifest.items[x]['id'];
-                            if (x <= 1) {
-                                config['windows'].push({
-                                    "manifestId": url
-                                });
-                            }
+                        
+                        catalog_window_array.forEach((index) => {
+                           var url = manifest.items[index].id;
+                           config['windows'].push({
+                               "manifestId": url
+                           });
+                        }); 
+                        
+                        manifest.items.forEach((item) => {
                             config['catalog'].push({
-                                "manifestId": url
+                                "manifestId": item.id
                             });
-                        }
+                        });                       
+
                     } else {
                         config['windows'] = [{
                             manifestId: getvars['manifest']

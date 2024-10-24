@@ -21,9 +21,10 @@ Load the manifest with the 5th canvas displayed by default. Note: the first canv
 ### Collections
 
 #### ?manifest=...&catalog=1
-If a collection manifest is loaded with the manifest URL parameter, you optionally may also add 'catalog=1' to load each manifest individually.
+If a collection manifest is loaded with the manifest URL parameter, you optionally may also add 'catalog=1' to load each manifest individually and to load the first manifest in a window by default.
 
-https://mcgrawcenter.github.io/mirador/?manifest=https://iiif.library.ucla.edu/collections/ark%3A%2F21198%2Fz1vb25zg&catalog=true
+https://mcgrawcenter.github.io/mirador/?manifest=https://iiif.library.ucla.edu/collections/ark%3A%2F21198%2Fz1vb25zg&catalog=1
 
+The catalog parameter can also be a comma separated list of manifest indexes to open by default
 
-
+https://mcgrawcenter.github.io/mirador/?manifest=https://iiif.library.ucla.edu/collections/ark%3A%2F21198%2Fz1vb25zg&catalog=1,5,8
