@@ -1,5 +1,5 @@
 # Mirador
-Mirador 3 wrapped in a Jekyll site
+Mirador 3 in a Jekyll site
 
 https://mcgrawcenter.github.io/mirador/
 
@@ -16,17 +16,14 @@ https://mcgrawcenter.github.io/mirador/?manifest=https://figgy.princeton.edu/con
 Load the manifest in gallery view
 
 #### ?manifest=...&canvas=5
-Load the manifest with the 5th canvas displayed by default.
+Load the manifest with the 5th canvas displayed by default. Note: the first canvas is number 0
 
 ### Collections
-#### ?collection=
 
-A collection manifest can be loaded into the viewer by adding a 'collection' parameter to the URL, such as:
+#### ?manifest=...&catalog=1
+If a collection manifest is loaded with the manifest URL parameter, you optionally may also add 'catalog=1' to load each manifest individually.
 
-https://mcgrawcenter.github.io/mirador/?collection=https://iiif.library.ucla.edu/collections/ark%3A%2F21198%2Fz1vb25zg
-
-or with the manifest parameter as with a single manifest
-
+https://mcgrawcenter.github.io/mirador/?manifest=https://iiif.library.ucla.edu/collections/ark%3A%2F21198%2Fz1vb25zg&catalog=true
 
 
 
