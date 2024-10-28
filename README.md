@@ -15,8 +15,11 @@ https://mcgrawcenter.github.io/mirador/?manifest=https://figgy.princeton.edu/con
 #### ?manifest=...&view=gallery
 Load the manifest in gallery view
 
-#### ?manifest=...&canvas=5
+#### ?manifest=...&canvasindex=5
 Load the manifest with the 5th canvas displayed by default. Note: the first canvas is number 0
+
+#### ?manifest=...&canvas=...
+Load the manifest with the canvas with id indicated with the canvas parameter
 
 ### Collections
 

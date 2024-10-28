@@ -28,17 +28,22 @@ if (typeof getvars['manifest'] !== 'undefined') {
                 case 'Manifest':
                     if (typeof getvars['view'] !== 'undefined') {
                         config['windows'] = [{
-                            manifestId: getvars['manifest'],
-                            view: getvars['view']
+                            'manifestId': getvars['manifest'],
+                            'view': getvars['view']
+                        }];
+                    } else if (typeof getvars['canvasindex'] !== 'undefined') {
+                        config['windows'] = [{
+                            'manifestId': getvars['manifest'],
+                            'canvasIndex': getvars['canvasindex']
                         }];
                     } else if (typeof getvars['canvas'] !== 'undefined') {
                         config['windows'] = [{
-                            manifestId: getvars['manifest'],
-                            'canvasIndex': getvars['canvas']
+                            'manifestId': getvars['manifest'],
+                            'canvasId': getvars['canvas']
                         }];
                     } else {
                         config['windows'] = [{
-                            manifestId: getvars['manifest']
+                            'manifestId': getvars['manifest']
                         }];
                     }
                     break;
@@ -77,6 +82,7 @@ if (typeof getvars['manifest'] !== 'undefined') {
         })
         .then((data) => {
             Mirador.viewer(config);
+            console.log(Mirador.viewer);
         });
 
 
@@ -84,6 +90,20 @@ if (typeof getvars['manifest'] !== 'undefined') {
 } else {
     Mirador.viewer(config);
 }
+
+
+/*
+
+  "viewers": {
+    "window-9bfc84e3-cda3-47a9-b72c-38042d0e8625": {
+      "flip": false,
+      "rotation": 0,
+      "x": 643,
+      "y": 619,
+      "zoom": 0.000617283950617284
+    }
+  },
+*/
 
 </script>
 
