@@ -15,6 +15,9 @@ https://mcgrawcenter.github.io/mirador/?manifest=https://figgy.princeton.edu/con
 #### ?manifest=...&view=gallery
 Load the manifest in gallery view
 
+#### ?manifest=...&nav=1 OR ?manifest=...&thumbnails=1 
+Load the thumbnail navigation toolbar at the bottom of the screen
+
 #### ?manifest=...&canvasindex=5
 Load the manifest with the 5th canvas displayed by default. Note: the first canvas is number 0
 

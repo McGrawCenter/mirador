@@ -46,6 +46,10 @@ if (typeof getvars['manifest'] !== 'undefined') {
                             'manifestId': getvars['manifest']
                         }];
                     }
+                    if(typeof getvars['nav'] !== 'undefined' || typeof getvars['thumbnails'] !== 'undefined') {
+                        config['windows'][0].thumbnailNavigationPosition = 'far-bottom';
+                        console.log(config);
+                    }
                     break;
                 case 'Collection':
                     if (typeof getvars['catalog'] !== 'undefined') {
