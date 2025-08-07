@@ -20,11 +20,12 @@ const config = {
 
 if (typeof getvars['manifest'] !== 'undefined') {
 
-    const vault = new IIIFVault.Vault();
-    vault.loadManifest(getvars['manifest']).then(async (manifest) => {
+    
+  var x = new SimpleParser();
+  x.convert(getvars['manifest']).then((manifest)=>{
+    console.log(manifest);
 
-
-            switch (manifest['type']) {
+    switch (manifest['type']) {
                 case 'Manifest':
                     if (typeof getvars['view'] !== 'undefined') {
                         config['windows'] = [{
@@ -80,14 +81,12 @@ if (typeof getvars['manifest'] !== 'undefined') {
                     }
 
                     break;
-            }
-
-
-        })
-        .then((data) => {
+      }
+  }).then((data) => {
             Mirador.viewer(config);
             console.log(Mirador.viewer);
-        });
+  });;	
+
 
 
 
@@ -96,18 +95,6 @@ if (typeof getvars['manifest'] !== 'undefined') {
 }
 
 
-/*
-
-  "viewers": {
-    "window-9bfc84e3-cda3-47a9-b72c-38042d0e8625": {
-      "flip": false,
-      "rotation": 0,
-      "x": 643,
-      "y": 619,
-      "zoom": 0.000617283950617284
-    }
-  },
-*/
 
 </script>
 
