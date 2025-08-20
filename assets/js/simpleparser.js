@@ -18,7 +18,7 @@ class SimpleParser {
        return response.json();
     }).then((manifest) => {
     
-
+    console.log(manifest);
     
                 if ("@type" in manifest) {
 
@@ -182,11 +182,11 @@ class SimpleParser {
         this.summary = this.getFirstValue(manifest.description);
         this.metadata = this.parseMetadata(manifest.metadata);
 
-
         if (manifest.items) {
             var items = manifest.items;
             
             for (const item of items) {
+            
 
                 var canvasID = item.id;
                 
@@ -226,14 +226,15 @@ class SimpleParser {
 
                     // service
                     var service = item.items[0].items[0].body.service;
-
-
+console.log("B");
+/*
                     if (service[0].type == 'ImageService3') {
                         imageobj.type = 3;
                     } else {
                         imageobj.type = 2;
                     }
-
+*/
+console.log("B");
 
                     if (typeof service === Array) {
                         imageobj.service = service['@id'];
@@ -250,7 +251,7 @@ class SimpleParser {
 
                     }
                     // end service ------------------------------
-
+console.log("B");
 
                     // add this image to the images array
                     this.items.push(imageobj);
