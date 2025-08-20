@@ -55,20 +55,25 @@ if (typeof getvars['manifest'] !== 'undefined') {
                 case 'Collection':
                     if (typeof getvars['catalog'] !== 'undefined') {
 			
+			/*
 			if(getvars['catalog'] == 'true') { getvars['catalog'] = 1; }
 			var catalog_window_array = getvars['catalog'].split(',');
+			*/
+			
 
-                        config['windows'] = [];
+                        //config['windows'] = [];
                         config['catalog'] = [];
-                        
-                        catalog_window_array.forEach((index) => {
-                           var url = manifest.items[index].id;
+                        /*
+                        manifest.items.forEach((item, index) => {
+			   if(index < 1) {
+                           var url = item.id;
                            config['windows'].push({
                                "manifestId": url
                            });
+                           }
                         }); 
-                        
-                        manifest.items.forEach((item) => {
+                        */
+                        manifest.items.forEach((item, index) => {
                             config['catalog'].push({
                                 "manifestId": item.id
                             });
@@ -84,7 +89,7 @@ if (typeof getvars['manifest'] !== 'undefined') {
       }
   }).then((data) => {
             Mirador.viewer(config);
-            console.log(Mirador.viewer);
+            console.log(config);
   });;	
 
 
