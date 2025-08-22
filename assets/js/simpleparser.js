@@ -179,8 +179,12 @@ class SimpleParser {
         this.id = this.getFirstValue(manifest['id']);
         this.type = "Manifest";
         this.label = this.getFirstValue(manifest.label);
-        this.summary = this.getFirstValue(manifest.description);
-        this.metadata = this.parseMetadata(manifest.metadata);
+        if(manifest.decsription) {
+          this.summary = this.getFirstValue(manifest.description);
+        }
+        if(manifest.metadata) {
+          this.metadata = this.parseMetadata(manifest.metadata);
+        }
 
         if (manifest.items) {
             var items = manifest.items;

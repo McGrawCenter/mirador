@@ -61,7 +61,7 @@ if (typeof getvars['manifest'] !== 'undefined') {
 			*/
 			
 
-                        //config['windows'] = [];
+                        config['windows'] = [{"manifestId":'https://etcpanel.princeton.edu/IIIF/manifests/instructions/manifest.json'}];
                         config['catalog'] = [];
                         /*
                         manifest.items.forEach((item, index) => {
