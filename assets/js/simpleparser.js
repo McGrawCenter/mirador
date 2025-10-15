@@ -230,7 +230,7 @@ class SimpleParser {
 
                     // service
                     var service = item.items[0].items[0].body.service;
-console.log("B");
+
 /*
                     if (service[0].type == 'ImageService3') {
                         imageobj.type = 3;
@@ -238,7 +238,7 @@ console.log("B");
                         imageobj.type = 2;
                     }
 */
-console.log("B");
+
 
                     if (typeof service === Array) {
                         imageobj.service = service['@id'];
@@ -255,7 +255,7 @@ console.log("B");
 
                     }
                     // end service ------------------------------
-console.log("B");
+
 
                     // add this image to the images array
                     this.items.push(imageobj);
@@ -294,6 +294,8 @@ console.log("B");
 
 
     parseMetadata(metadata) {
+    
+        if(!metadata) { return []; }
 
         var a = [];
 
