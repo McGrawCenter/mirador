@@ -34,3 +34,15 @@ https://mcgrawcenter.github.io/mirador/?manifest=https://iiif.library.ucla.edu/c
 The catalog parameter can also be a comma separated list of manifest indexes to open by default
 
 https://mcgrawcenter.github.io/mirador/?manifest=https://iiif.library.ucla.edu/collections/ark%3A%2F21198%2Fz1vb25zg&catalog=1,5,8
+
+### Targets
+As a simple alternative to implementing the Content State API, we have the target parameter
+
+#### ?manifest=...itemManifest...&target=1
+Displays the second canvas in an item manifest
+
+#### ?manifest=...collectionManifest...&target=1
+Displays the second manifest in a collection, defaulting to displaying the first canvas
+
+#### ?manifest=...collectionManifest...&target=1,1
+Displays the second canvas in the second manifest in a collection
