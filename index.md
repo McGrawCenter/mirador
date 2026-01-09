@@ -19,11 +19,12 @@ const config = {
 
 
 if (typeof getvars['manifest'] !== 'undefined') {
+     var parser = new Parser();
+     parser.parse(getvars['manifest']).then((manifest)=>{
+          console.log(manifest);
+          
 
-    
-  var x = new SimpleParser();
-  x.convert(getvars['manifest']).then((manifest)=>{
-    console.log(manifest);
+
 
     switch (manifest['type']) {
                 case 'Manifest':
@@ -55,14 +56,26 @@ if (typeof getvars['manifest'] !== 'undefined') {
                 case 'Collection':
                     if (typeof getvars['catalog'] !== 'undefined') {
 			
-			/*
-			if(getvars['catalog'] == 'true') { getvars['catalog'] = 1; }
-			var catalog_window_array = getvars['catalog'].split(',');
-			*/
+			config['catalog'] = [];
+			config['windows'] = [];
 			
-
-                        config['windows'] = [{"manifestId":'https://etcpanel.princeton.edu/IIIF/manifests/instructions/manifest.json'}];
-                        config['catalog'] = [];
+			if(getvars['catalog'] == 'true') { 
+			  config['windows'].push({"manifestId":'https://etcpanel.princeton.edu/IIIF/manifests/instructions/manifest.json'});
+			}
+			else {
+			  var catalog_window_array = getvars['catalog'].split(',');
+			  for (const num of catalog_window_array) {
+			     config['windows'].push({"manifestId": manifest.items[num].id });
+			  }
+			}
+			
+                        manifest.items.forEach((item, index) => {
+                            config['catalog'].push({
+                                "manifestId": item.id
+                            });
+                        }); 
+                        
+                        
                         /*
                         manifest.items.forEach((item, index) => {
 			   if(index < 1) {
@@ -73,11 +86,7 @@ if (typeof getvars['manifest'] !== 'undefined') {
                            }
                         }); 
                         */
-                        manifest.items.forEach((item, index) => {
-                            config['catalog'].push({
-                                "manifestId": item.id
-                            });
-                        });                       
+                      
 
                     } else {
                         config['windows'] = [{
@@ -86,7 +95,16 @@ if (typeof getvars['manifest'] !== 'undefined') {
                     }
 
                     break;
+                    
       }
+
+
+
+
+
+
+          
+          
   }).then((data) => {
             Mirador.viewer(config);
             console.log(config);
@@ -102,7 +120,3 @@ if (typeof getvars['manifest'] !== 'undefined') {
 
 
 </script>
-
-
-
-
