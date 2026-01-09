@@ -41,8 +41,10 @@ if (typeof getvars['manifest'] !== 'undefined') {
                     } else if (typeof getvars['target'] !== 'undefined') {
                         config['windows'] = [{
                             'manifestId': getvars['manifest'],
-                            'canvasIndex': target
+                            'canvasIndex': getvars['target']
                         }];
+                        console.log('with target');
+                        console.log(config);
                     } else if (typeof getvars['canvas'] !== 'undefined') {
                         config['windows'] = [{
                             'manifestId': getvars['manifest'],
