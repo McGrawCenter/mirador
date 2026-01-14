@@ -20,39 +20,42 @@ const config = {
 
 if (typeof getvars['manifest'] !== 'undefined') {
      var parser = new Parser();
-     parser.parse(getvars['manifest']).then((manifest)=>{
-          console.log(manifest);
+     
+     var url = decodeURIComponent(getvars['manifest']);
+
+     parser.parse(url).then((manifest)=>{
           
-
-
+          
+       console.log(manifest);
+          
 
     switch (manifest['type']) {
                 case 'Manifest':
                     if (typeof getvars['view'] !== 'undefined') {
                         config['windows'] = [{
-                            'manifestId': getvars['manifest'],
+                            'manifestId': url,
                             'view': getvars['view']
                         }];
                     } else if (typeof getvars['canvasindex'] !== 'undefined') {
                         config['windows'] = [{
-                            'manifestId': getvars['manifest'],
+                            'manifestId': url,
                             'canvasIndex': getvars['canvasindex']
                         }];
                     } else if (typeof getvars['target'] !== 'undefined') {
                         config['windows'] = [{
-                            'manifestId': getvars['manifest'],
+                            'manifestId': url,
                             'canvasIndex': getvars['target']
                         }];
                         console.log('with target');
                         console.log(config);
                     } else if (typeof getvars['canvas'] !== 'undefined') {
                         config['windows'] = [{
-                            'manifestId': getvars['manifest'],
+                            'manifestId': url,
                             'canvasId': getvars['canvas']
                         }];
                     } else {
                         config['windows'] = [{
-                            'manifestId': getvars['manifest']
+                            'manifestId': url
                         }];
                     }
                     if(typeof getvars['nav'] !== 'undefined' || typeof getvars['thumbnails'] !== 'undefined') {
