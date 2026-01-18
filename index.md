@@ -9,6 +9,7 @@ layout: default
 
 <script>
 var getvars = [];
+
 window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(a, name, value) {
     getvars[name] = value;
 });
@@ -19,9 +20,10 @@ const config = {
 
 
 if (typeof getvars['manifest'] !== 'undefined') {
+
      var parser = new Parser();
      
-     var url = decodeURIComponent(getvars['manifest']);
+     var url = getvars['manifest'];
 
      parser.parse(url).then((manifest)=>{
           
