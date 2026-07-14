@@ -21,18 +21,16 @@ const config = {
 
 if (typeof getvars['manifest'] !== 'undefined') {
 
-     var parser = new Parser();
-     
-     var url = getvars['manifest'];
+    const url = getvars['manifest'];
 
-     parser.parse(url).then((manifest)=>{
-          
-          
-       console.log(manifest);
-          
+    fetch(url).then(response => response.json())
+        .then(data => {
+            //console.log(data);
 
-    switch (manifest['type']) {
-                case 'Manifest':
+            // Parse the manifest using manifesto
+            const manifest = manifesto.parseManifest(data);
+            switch (manifest.getIIIFResourceType()) {
+                case 'manifest':
                     if (typeof getvars['view'] !== 'undefined') {
                         config['windows'] = [{
                             'manifestId': url,
@@ -56,80 +54,76 @@ if (typeof getvars['manifest'] !== 'undefined') {
                             'canvasId': getvars['canvas']
                         }];
                     } else {
+
                         config['windows'] = [{
                             'manifestId': url
                         }];
                     }
-                    if(typeof getvars['nav'] !== 'undefined' || typeof getvars['thumbnails'] !== 'undefined') {
+                    if (typeof getvars['nav'] !== 'undefined' || typeof getvars['thumbnails'] !== 'undefined') {
                         config['windows'][0].thumbnailNavigationPosition = 'far-bottom';
-                        console.log(config);
                     }
                     break;
-                case 'Collection':
+                case 'collection':
                     if (typeof getvars['catalog'] !== 'undefined') {
-			
-			config['catalog'] = [];
-			config['windows'] = [];
-			
-			if(getvars['catalog'] == 'true') { 
-			  config['windows'].push({"manifestId":'https://etcpanel.princeton.edu/IIIF/manifests/instructions/manifest.json'});
-			}
-			else {
-			  var catalog_window_array = getvars['catalog'].split(',');
-			  for (const num of catalog_window_array) {
-			     config['windows'].push({"manifestId": manifest.items[num].id });
-			  }
-			}
-			
+
+                        config['catalog'] = [];
+                        config['windows'] = [];
+
+                        if (getvars['catalog'] == 'true') {
+                            config['windows'].push({
+                                "manifestId": 'https://etcpanel.princeton.edu/IIIF/manifests/instructions/manifest.json'
+                            });
+                        } else {
+                            var catalog_window_array = getvars['catalog'].split(',');
+                            for (const num of catalog_window_array) {
+                                config['windows'].push({
+                                    "manifestId": manifest.items[num].id
+                                });
+                            }
+                        }
+
                         manifest.items.forEach((item, index) => {
                             config['catalog'].push({
                                 "manifestId": item.id
                             });
-                        }); 
+                        });
 
                     } else {
                         config['catalog'] = [];
                         config['windows'] = [];
-                        if (typeof getvars['target'] !== 'undefined') { 
-                           var target = getvars['target'].split('.');
-                           if(target.length > 0) {
-                             if(target.length == 1) { 
-                               config['windows'].push({"manifestId":manifest.items[target[0]].id});
-                              }
-                             else if(target.length > 1) { 
-                               config['windows'].push({"manifestId":manifest.items[target[0]].id, 'canvasIndex': target[1]});
-                              }
-                           }
-                           
+                        if (typeof getvars['target'] !== 'undefined') {
+                            var target = getvars['target'].split('.');
+                            if (target.length > 0) {
+                                if (target.length == 1) {
+                                    config['windows'].push({
+                                        "manifestId": manifest.items[target[0]].id
+                                    });
+                                } else if (target.length > 1) {
+                                    config['windows'].push({
+                                        "manifestId": manifest.items[target[0]].id,
+                                        'canvasIndex': target[1]
+                                    });
+                                }
+                            }
+
                         } else {
-                           config['windows'].push({"manifestId":'https://etcpanel.princeton.edu/IIIF/manifests/instructions/manifest.json'});
+                            //config['windows'].push({"manifestId":'https://etcpanel.princeton.edu/IIIF/manifests/instructions/manifest.json'});
                         }
 
-                        
-                        
+
+
 
                         manifest.items.forEach((item, index) => {
                             config['catalog'].push({
                                 "manifestId": item.id
                             });
-                        });                         
+                        });
                     }
 
-                    break;     
-      }
-    
-  }).then((data) => {
+                    break;
+            }
             Mirador.viewer(config);
-            console.log(config);
-  });;	
+        });
 
-
-} else {
-    Mirador.viewer(config);
 }
-
-
-
-
-
 </script>
