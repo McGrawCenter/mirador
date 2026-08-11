@@ -1,5 +1,5 @@
 # Mirador
-Mirador 3 in a Jekyll site
+Mirador 3 with additional url parameters
 
 https://mcgrawcenter.github.io/mirador/
 
