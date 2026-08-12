@@ -25,10 +25,14 @@
   <body>
     <div id="mirador"></div>
     <script>
+    
+    
 async function initMirador() {
   // 1. Parse URL parameters using native URLSearchParams
   const params = new URLSearchParams(window.location.search);
-  const manifestUrl = params.get('manifest') || params.get('iiif-content');
+  var manifestUrl = params.get('manifest') || params.get('iiif-content');
+  manifestUrl = urlFixes(manifestUrl);
+  
 
   // Base Mirador Configuration
   const config = {
@@ -153,6 +157,19 @@ async function initMirador() {
 
 // Execute on DOM load
 document.addEventListener('DOMContentLoaded', initMirador);
+
+    function urlFixes(url) {
+	    /************************
+	    * UCLA has an 'ark:' in their urls that need to be encoded
+	    ************************************/
+	    url = url.replace(/ark:\/(.*?)\/manifest/, function(r, a) {
+	        var parts = a.split('/');
+	        return "ark%3A%2F" + parts.join('%2F')+"/manifest";
+	    });
+	    return url;
+    }
+
+
     </script>
   </body>
 </html>
