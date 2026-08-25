@@ -31,7 +31,7 @@ async function initMirador() {
   // 1. Parse URL parameters using native URLSearchParams
   const params = new URLSearchParams(window.location.search);
   var manifestUrl = params.get('manifest') || params.get('iiif-content');
-  manifestUrl = urlFixes(manifestUrl);
+  if(manifestUrl) {  manifestUrl = urlFixes(manifestUrl); }
   
 
   // Base Mirador Configuration
